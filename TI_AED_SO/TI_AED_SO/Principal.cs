@@ -18,6 +18,7 @@ namespace TI_AED_SO
         public Principal()
         {
             InitializeComponent();
+            //as filas foram criadas manualmente, as principais, para depois acrescentar as listas e os elementos.
             this.prioridades[0] = new Fila();
             this.prioridades[1] = new Fila();
             this.prioridades[2] = new Fila();
@@ -29,16 +30,17 @@ namespace TI_AED_SO
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            //depois apagar
         }
 
         private void Preencher()
         {
+            //leitura do arquivo e instanciando a fila
             string[] texto;
             StreamReader arq = new StreamReader(@"Arquivo.txt");
             //int quant = arq.ReadLine().Count();
             int quant = File.ReadLines(@"Arquivo.txt").Count();
-
+            
             for (int i = 0; i < quant; i++)
             {
                 texto = arq.ReadLine().Split(';');
@@ -50,18 +52,18 @@ namespace TI_AED_SO
         }
         private void Executar()
         {
+            //conferir se todos as prioridades foram atendidas e se está funcionando corretamente.
             for (int i = 0; i < this.prioridades.Length; i++)
             {
                 if (!this.prioridades[i].Vazia())
                 {
                     Elemento auxE = prioridades[i].Retirar();
                     Processo auxP = (Processo)(IDados)auxE;
+                    
                     if (auxP.Ciclo())
-                        finalizados.Inserir(auxP);
+                        finalizados.Inserir(auxP); //já está inserindo na nova lista de atividades finalizadas.
                     else
-                    {
                         this.prioridades[auxP.Qtd].Inserir(auxP);
-                    }
                 }
             }
         }
