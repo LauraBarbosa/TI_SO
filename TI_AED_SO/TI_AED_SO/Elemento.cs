@@ -8,6 +8,7 @@ namespace TI_AED_SO
 {
     class Elemento
     {
+        //o elemento possui um tipo de dado que o compõe e também um outro elemento próximo para dar continuidade á lista/fila/pilha
         public IDados dados;
         public Elemento prox;
 
