@@ -10,13 +10,13 @@ namespace TI_AED_SO
     {
         private Elemento prim, ult;
 
-        public Fila()
+        public Fila() //Ana: tinha um Dado que não estava sendo utilizado e prejudicava na hora de instanciar no Principal
         {
             this.prim = new Elemento(null);
             this.ult = this.prim;
         }
 
-        public void Inserir(IDados novo)
+        public void Inserir(IDados novo) //Ana: a fila só precisa de um dado nesse momento, para fazer a inserção, antes tinha no construtor (retirei, vide construtor)
         {
             Elemento aux = new Elemento(novo);
             this.ult.prox = aux;
@@ -41,7 +41,7 @@ namespace TI_AED_SO
         {
             return prim.prox;
         }
-        public bool Vazia()
+        public bool Vazia() //Ana: Adicionado para poder fazer a validação da fila 
         {
             if (ult == prim)
                 return true;
