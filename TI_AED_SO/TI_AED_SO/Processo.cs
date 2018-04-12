@@ -23,6 +23,7 @@ namespace TI_AED_SO
             this.tempo = tempo;
             this.qtd = 0;
         }
+        //Feitor por Jeff, os compareTo estão corretos? São necessários?
         public int CompareTo(IDados other) //Comparar os processos e quantidade de vezes a executar
         {
             Processo aux = (Processo)other;
@@ -42,8 +43,10 @@ namespace TI_AED_SO
             if (this.Pid == aux.Pid) return true;
             else return false;
         }
+        //////////////////////////////////////
         public bool Ciclo()
         {
+            //Ana: thread para execução do tempo e parada correta.
             qtd--;
             Thread.Sleep((int)(tempo * 1000));
             if (qtd == 0)
